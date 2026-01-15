@@ -1,0 +1,52 @@
+project: coconut
+save_path: ...
+name: gsm_coconut_simcot
+
+only_eval: False
+
+coconut: True
+cot: False
+no_thoughts: False
+no_cot: False
+coconutgpt: True
+save_ckpts: False
+
+c_thought: 2
+epochs_per_stage: 2
+save_every_k: 5
+max_latent_stage: 10
+pad_latent_to_max: True
+
+save_only_improve: False
+uniform_prob: 0.0
+
+# Model and checkpoint paths (use relative or env variables)
+model_id: /scratch/e1374322/meta-llama/Llama-3.2-1B-Instruct
+load_model_path: "None"
+
+logger: True
+seed: 0
+resume: 0
+bf16: False
+
+# data
+train_path: .../gsm/train_sft.json
+val_path: .../gsm/val.json
+test_path: .../gsm/test.json
+
+reset_optimizer: True
+batch_size_training: 32
+batch_size_validating: 8
+debug: False
+gradient_accumulation_steps: 1
+kl_factor: 0.001
+num_epochs: 25
+lr: !!float "1e-4"
+weight_decay: 0.01
+
+w_prompt: False
+mode: coconutgpt_same_word_embedding_len_vae
+explain_mode: v1_aug
+
+# freeze or not: full, only_base_causallm, only_expainable_llm
+training_method: full

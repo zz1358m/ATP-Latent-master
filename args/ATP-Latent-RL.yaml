@@ -1,0 +1,66 @@
+project: coconut
+save_path: ...
+name: gsm_coconut_simcot_rl
+
+only_eval: False
+
+coconut: True
+cot: False
+no_thoughts: False
+no_cot: False
+coconutgpt: True
+logger: True
+save_ckpts: True
+
+c_thought: 2
+epochs_per_stage: 3
+save_every_k: 1000
+max_latent_stage: 10
+pad_latent_to_max: True
+
+save_only_improve: False
+uniform_prob: 0.0
+
+# Model and checkpoint paths (portable)
+model_id: /scratch/e1374322/meta-llama/Llama-3.2-1B-Instruct
+load_model_path: .../checkpoint_15
+
+wandb: False
+seed: 0
+resume: 0
+bf16: False
+
+# for debug
+train_path: .../gsm/train_rl.json
+val_path: .../gsm/test.json
+test_path: .../gsm/test.json
+
+reset_optimizer: True
+batch_size_training: 16
+batch_size_validating: 1
+steps_validating: 200
+debug: False
+gradient_accumulation_steps: 1
+num_epochs: 1
+lr: !!float "1e-6"
+weight_decay: 0.01
+
+clip_eps: 0.2
+use_latent_loss: True
+use_answer_loss: True
+exp_batch_size: 16
+temperature: 1.0
+max_new_tokens: 16
+group_size: 8
+accuracy_reward_weight: 1
+format_reward_weight: 0.5
+reason_reward_weight: 0.1
+latent_sigma: 0.001
+rms_noise: False
+
+w_prompt: False
+mode: coconut_rl_end_vae
+explain_mode: v1_aug
+
+# freeze or not: full, only_base_causallm, only_expainable_llm
+training_method: only_base_causallm
